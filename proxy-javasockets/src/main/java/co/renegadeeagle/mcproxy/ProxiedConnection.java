@@ -43,6 +43,7 @@ public class ProxiedConnection implements Runnable {
     public void run() {
         while (connection.isActive()) {
             try {
+                Thread.sleep(150);
                 int length = in.read(buffer);
                 byte[] toSend = Arrays.copyOfRange(buffer, 0, length);
                 connection.getOut().write(toSend);
